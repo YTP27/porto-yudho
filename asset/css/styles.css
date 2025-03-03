@@ -1,0 +1,116 @@
+/* Reset Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: #0d1117; /* Dark Theme */
+  color: #ffffff;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Container for centering content */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+}
+
+/* Navbar */
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2% 5%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.header .logo {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.header .menu {
+  display: flex;
+  align-items: center;
+}
+
+.header .menu span {
+  margin-left: 15px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding-top: 80px; /* Adjust to prevent overlap with fixed navbar */
+  padding: 0 20px;
+}
+
+.hero h1, .hero h2 {
+  font-size: 32px;
+  margin: 10px 0;
+}
+
+.hero h1 .highlight, .hero h2 .highlight {
+  color: #58a6ff;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.links {
+  margin-top: 20px;
+}
+
+.links a {
+  color: #58a6ff;
+  text-decoration: none;
+  margin: 10px;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.links a:hover {
+  color: #ffffff;
+}
+
+/* Light Theme */
+body.light-theme {
+  background: #ffffff;
+  color: #0d1117;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .header .menu span {
+    margin-left: 10px;
+    font-size: 16px;
+  }
+
+  .hero h1, .hero h2 {
+    font-size: 24px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .links a {
+    font-size: 16px;
+  }
+}
