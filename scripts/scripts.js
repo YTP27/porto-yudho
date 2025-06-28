@@ -1,59 +1,86 @@
+// scripts/scripts.js
 document.addEventListener('DOMContentLoaded', function () {
-  const themeToggle = document.querySelector('.theme-toggle');
-  const gridToggle = document.querySelector('.grid');
-  const languageSwitch = document.getElementById('language-switch');
-  const body = document.body;
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
 
-  // Teks untuk bahasa Inggris dan Indonesia
-  const translations = {
-    en: {
-      heroTitle: "HEY, I'M <span class='highlight'>YUDHO TRI PUTRANTO</span>",
-      heroSubtitle: "BUT YOU CAN CALL ME <span class='highlight'>YUDHO</span>",
-      heroDescription: "I'm a UI/UX designer, QA Engineer, and calisthenics coach",
-      linkProjects: "→ See My Projects",
-      linkAbout: "→ About Me",
-      languageSwitchText: "EN",
-    },
-    id: {
-      heroTitle: "HAI, SAYA <span class='highlight'>YUDHO TRI PUTRANTO</span>",
-      heroSubtitle: "TAPI ANDA BISA PANGGIL SAYA <span class='highlight'>YUDHO</span>",
-      heroDescription: "Saya seorang desainer UI/UX, QA Engineer, dan pelatih calisthenics",
-      linkProjects: "→ Lihat Proyek Saya",
-      linkAbout: "→ Tentang Saya",
-      languageSwitchText: "ID",
-    }
-  };
+  // Update current year
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-  // Set bahasa default (English)
-  let currentLanguage = 'en';
-  
-  // Fungsi untuk mengubah teks halaman
-  function changeLanguage(language) {
-    document.querySelector('.hero h1').innerHTML = translations[language].heroTitle;
-    document.querySelector('.hero h2').innerHTML = translations[language].heroSubtitle;
-    document.querySelector('.hero p').textContent = translations[language].heroDescription;
-    document.querySelector('.links a[href="projects.html"]').textContent = translations[language].linkProjects;
-    document.querySelector('.links a[href="about.html"]').textContent = translations[language].linkAbout;
-    languageSwitch.textContent = translations[language].languageSwitchText;
+  // Header shadow on scroll
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.style.boxShadow = window.scrollY > 30 ? '0 2px 10px rgba(0,0,0,0.1)' : 'none';
+  });
+
+  // Toggle nav for mobile
+  const iconNav = document.querySelector('.icon-nav');
+  const nav = document.querySelector('nav');
+  if (iconNav && nav) {
+    iconNav.addEventListener('click', () => nav.classList.toggle('d-none'));
   }
 
-  // Toggle theme
-  themeToggle.addEventListener('click', () => {
-      body.classList.toggle('light-theme');
-      body.classList.toggle('dark-theme');
+  // Hero image grayscale toggle on hover
+  const heroImage = document.querySelector('.face-img');
+  const hero = document.getElementById('hero');
+  if (hero && heroImage) {
+    hero.addEventListener('mouseenter', () => {
+      gsap.to(heroImage, { filter: "grayscale(0%)", duration: 0.4 });
+    });
+    hero.addEventListener('mouseleave', () => {
+      gsap.to(heroImage, { filter: "grayscale(100%)", duration: 0.4 });
+    });
+  }
+
+  // ==============================
+  // GSAP HERO ENTRANCE ANIMATION
+  // ==============================
+
+  // Set initial state
+  gsap.set(".face-img", { y: 60, opacity: 0 });
+  gsap.set(".face-side.left .label", { x: -60, opacity: 0 });
+  gsap.set(".face-side.right .label", { x: 60, opacity: 0 });
+
+  // Animate in
+  gsap.to(".face-img", {
+    y: 0,
+    opacity: 1,
+    duration: 1.2,
+    ease: "power3.out",
+    delay: 0.3
   });
 
-  // Toggle grid overlay
-  gridToggle.addEventListener('click', () => {
-      body.classList.toggle('show-grid');
+  gsap.to(".face-side.left .label", {
+    x: 0,
+    opacity: 1,
+    duration: 1,
+    ease: "power3.out",
+    delay: 0.6
   });
 
-  // Event listener untuk mengubah bahasa saat tombol di-click
-  languageSwitch.addEventListener('click', () => {
-    currentLanguage = currentLanguage === 'en' ? 'id' : 'en'; // Toggle bahasa
-    changeLanguage(currentLanguage); // Ubah bahasa
+  gsap.to(".face-side.right .label", {
+    x: 0,
+    opacity: 1,
+    duration: 1,
+    ease: "power3.out",
+    delay: 0.9
   });
 
-  // Inisialisasi dengan bahasa default
-  changeLanguage(currentLanguage);
+  // Optional image float on hover
+  if (heroImage) {
+    heroImage.addEventListener('mouseenter', () => {
+      gsap.to(heroImage, { y: -8, duration: 0.4, ease: "power1.out" });
+    });
+
+    heroImage.addEventListener('mouseleave', () => {
+      gsap.to(heroImage, { y: 0, duration: 0.4, ease: "power1.out" });
+    });
+  }
 });
+
+
