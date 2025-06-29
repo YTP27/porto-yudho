@@ -16,25 +16,50 @@
 <body>
 
   <!-- Header -->
-  <header id="header">
-    <div class="container d-flex justify-content-between align-items-center py-3">
-      <a id="logo" href="#">Yudho T.P.</a>
-      <div class="icon-nav d-lg-none">navigation</div>
-      <nav class="d-none d-lg-block">
-        <ul id="nav" class="d-flex gap-4 m-0 align-items-center">
-          <li><a href="#about">about</a></li>
-          <li><a href="#projects">portfolio</a></li>
-          <li><a href="#contact">contact</a></li>
-          <li>
-            <ul class="social d-flex gap-3">
-              <li><a href="https://linkedin.com/in/yudho-tri-putranto-598ab6221/" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a></li>
-              <li><a href="https://github.com/YTP27" target="_blank"><i class="fab fa-github fa-lg"></i></a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+<header id="header">
+  <div class="container d-flex justify-content-between align-items-center py-3">
+
+    <a id="logo" href="#">
+      <img src="asset/images/logoytpwhite.png" alt="Yudho T.P. Logo">
+    </a>
+
+    <div class="icon-nav">
+      <i class="fas fa-bars fa-2x"></i>
     </div>
-  </header>
+
+    <!-- Nav Desktop -->
+    <nav id="nav" class="d-none d-lg-flex">
+      <ul class="menu list-unstyled d-flex gap-4 m-0 align-items-center">
+        <li><a href="about.html">about</a></li>
+        <li><a href="#projects">portfolio</a></li>
+        <li><a href="#contact">contact</a></li>
+        <li>
+          <ul class="social d-flex gap-3">
+            <li><a href="https://linkedin.com/in/yudho-tri-putranto-598ab6221/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://www.facebook.com/yudho.putranto.12" target="_blank"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="https://www.instagram.com/ytp_27/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Menu Mobile yang muncul saat klik hamburger -->
+  <div id="mobile-menu" class="mobile-menu">
+    <ul class="list-unstyled">
+      <li><a href="#about">about</a></li>
+      <li><a href="#projects">portfolio</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+    <ul class="social list-unstyled d-flex gap-3 justify-content-center mt-3">
+      <li><a href="https://linkedin.com/in/yudho-tri-putranto-598ab6221/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+      <li><a href="https://www.facebook.com/yudho.putranto.12" target="_blank"><i class="fab fa-facebook"></i></a></li>
+      <li><a href="https://www.instagram.com/ytp_27/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+    </ul>
+  </div>
+</header>
+
+
 
  <!-- Hero -->
 <section id="hero">
@@ -57,15 +82,13 @@
   </div>
 </section>
 
-
-
   <!-- Projects -->
   <section id="projects" class="py-5 text-center">
     <div class="container">
       <div class="section-heading mb-5">
         <h2>Some of My Latest Work</h2>
       </div>
-      <div class="row g-4">
+      <div class="row g-4 d-flex align-items-stretch">
         <!-- CARD 1 -->
         <div class="col-md-4">
           <div class="project-card">

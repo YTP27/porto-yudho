@@ -1,168 +1,703 @@
-/* Reset Styles */
-* {
+/* === BASE SETUP === */
+body {
+    font-family: 'Poppins', sans-serif;
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    background-color: #fff;
+    color: #333;
 }
 
-body {
-    font-family: 'Orbitron', sans-serif;
+/* === HEADER === */
+#header {
+    background: #000;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #333;
+}
+
+#logo {
+    display: inline-block;
+}
+
+#logo img {
+    height: 67px; /* Default height for desktop */
+    max-height: 100px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.icon-nav {
+    display: none; /* Hidden by default on desktop */
+    cursor: pointer;
+    color: #fff;
+}
+
+#nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.menu {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    position: relative; /* For the underline effect */
+}
+
+.menu li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+}
+
+.menu li a:hover::after,
+.menu li a.active::after { /* Optional: for active link */
+    width: 100%;
+}
+
+.social {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    padding-left: 0;
+    margin: 0;
+}
+
+.social li a {
+    text-decoration: none;
+    color: #ccc;
+    font-size: 1.7rem;
+    transition: color 0.2s ease;
+}
+
+.social li a:hover {
+    color: #fff;
+}
+
+/* === HERO SPLIT SECTION (FROM INDEX.HTML - KEPT FOR REFERENCE IF NEEDED) === */
+/* These styles are likely not used on about.html but are kept for completeness */
+#hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+.face {
+    width: 100%;
+    height: 100%;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    background: linear-gradient(135deg, #0d1117, #1c2331);
-    color: #ffffff;
-    transition: background 0.3s, color 0.3s;
 }
 
-body.light-theme {
-    background: linear-gradient(135deg, #ffffff, #f0f0f0);
-    color: #0d1117;
-}
-
-.container {
-    width: 90%;
-    max-width: 1200px;
-}
-
-/* Navbar Styling */
-.header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2% 5%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    background: transparent;
-}
-
-.header .logo {
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.header .menu {
-    display: flex;
-    align-items: center;
-}
-
-.header .menu span {
-    margin-left: 15px;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-/* Content Styling */
-.content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    align-items: center;
-    animation: fadeIn 1s ease-out;
-    padding-top: 80px;
-}
-
-.photo {
-    flex: 1;
-    min-width: 100px;
-    max-width: 500px;
-}
-
-.photo img {
-    width: 100%;
-    height: 700px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.about-text {
-    flex: 2;
-    max-width: 600px;
-    text-align: left;
-}
-
-.about-text h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-.about-text h1::after {
-    content: "";
+.face-img {
     position: absolute;
-    left: 0;
-    bottom: -10px;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, #58a6ff, #ff7b72);
-    border-radius: 1px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    width: auto;
+    max-width: none;
+    object-fit: cover;
+    z-index: 1;
+    filter: grayscale(100%);
+    margin-top: -10%;
 }
 
-.about-text p {
-    font-size: 18px;
-    line-height: 1.5;
-    margin-bottom: 20px;
-}
-
-.about-text .resume-link {
-    color: #58a6ff;
+.face-side {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    text-align: center;
     text-decoration: none;
-    font-size: 18px;
-    transition: color 0.3s, transform 0.3s;
+    color: #000;
 }
 
-.about-text .resume-link:hover {
-    color: #ffffff;
-    transform: translateY(-2px);
+.face-side .label {
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
-/* Mobile Styling */
-@media (max-width: 768px) {
-    .content {
-        flex-direction: column; /* Atur ulang layout vertikal */
-        text-align: center;
+.face-side .label h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #000;
+    text-transform: uppercase;
+}
+
+.face-side .label p {
+    font-size: 1.1rem;
+    margin: 0;
+    color: #000;
+}
+
+.face-side.left {
+    justify-content: flex-end;
+    padding-right: 5%;
+}
+
+.face-side.right {
+    justify-content: flex-start;
+    padding-left: 5%;
+}
+
+/* === SECTION HEADING WITH LINES === */
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 3rem;
+}
+
+.section-heading hr {
+    flex: 1;
+    height: 1px;
+    max-width: 150px;
+    border: none;
+    background-color: #ccc;
+    opacity: 0.6;
+    margin: 0;
+}
+.section-heading h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: capitalize;
+}
+
+/* === PROJECTS SECTION (FROM INDEX.HTML - KEPT FOR REFERENCE IF NEEDED) === */
+/* These styles are likely not used on about.html but are kept for completeness */
+#projects {
+    overflow: visible !important;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.project-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 50px 38px rgba(0, 0, 0, 0.1);
+}
+
+.project-image-wrapper {
+    background: #f8f8f8;
+    padding: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 210px;
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+}
+
+.project-thumb {
+    background-color: #e0e0e0;
+    width: 90%;
+    max-width: 95%;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    height: 170px;
+}
+
+.project-thumb img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.project-card .card-body {
+    padding: 1.25rem 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 190px;
+}
+
+.project-card .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #222;
+}
+
+.project-card .card-text {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0;
+    height: 40px;
+    line-height: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.project-card .btn {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: 20px;
+    margin-top: auto;
+    color: #666;
+    border-color: #666;
+    transition: all 0.2s ease;
+}
+
+.project-card .btn:hover {
+    background-color: #666;
+    color: white;
+}
+
+/* === CONTACT SECTION === */
+#contact {
+    padding: 5rem 0;
+}
+#contact h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 2rem;
+}
+#contact .fab, #contact .fas {
+    font-size: 3rem;
+    transition: color 0.2s ease;
+}
+#contact .fab:hover, #contact .fas:hover {
+    color: #007bff;
+}
+
+/* === FOOTER === */
+footer {
+    font-size: 0.9rem;
+    color: #bbb;
+}
+
+/* === MOBILE MENU (HIDDEN BY DEFAULT) === */
+.mobile-menu {
+    position: fixed;
+    top: 70px; /* Should be height of header */
+    left: 0;
+    width: 100%;
+    background: #000;
+    padding: 1.5rem 1rem;
+    display: none; /* Hidden by default, shown by JS */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 999;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.mobile-menu.active {
+    display: flex; /* Show when active */
+}
+
+.mobile-menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+}
+
+.mobile-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.mobile-menu a:hover {
+    color: #ddd;
+}
+
+
+/* ====================================================================== */
+/* === ABOUT PAGE SPECIFIC STYLES - Revamped to match Adham's portfolio === */
+/* ====================================================================== */
+
+#about-page {
+    padding: 6rem 0;
+}
+
+#about-page .my-profile-img {
+    max-width: 100%; /* Increased size to match Adham's */
+    border-radius: 0; /* Adham's image is not circular */
+    margin-top: 0; /* Adjust margin if needed */
+    box-shadow: none; /* Remove box shadow as per Adham's design */
+}
+#about-page .lead {
+    font-size: 1.5rem; /* Slightly larger lead text */
+    font-weight: 600; /* More prominent */
+    color: #333; /* Darker color */
+}
+#about-page p {
+    color: #555;
+    line-height: 1.8;
+}
+
+/* Designer/Coder Split Section - Revamped */
+#designer-coder {
+    padding: 6rem 0;
+    background-color: #f8f9fa; /* Lighter background for this section */
+}
+
+#designer-coder h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-weight: 700;
+}
+
+#designer-coder ul {
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.8;
+    padding-left: 0;
+}
+#designer-coder ul li {
+    list-style: none;
+}
+
+.pie-chart-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto; /* Center the container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* Ensure container is circular if you want overflow hidden to work for labels */
+    overflow: hidden; /* Hide labels initially outside the circle */
+}
+
+.pie-chart {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(#495057 0% 55%, #f8f9fa 55% 100%); /* Default values matching Adham's static image */
+    position: absolute; /* Position absolutely within its container */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.pie-label-designer, .pie-label-coder {
+    position: absolute;
+    font-weight: 700;
+    font-size: 1.1rem;
+    z-index: 2; /* Ensure labels are above the pie chart */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%; /* Each label takes half width for positioning */
+    height: 100%; /* Take full height of container */
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+.pie-label-designer {
+    left: 0; /* Position to the left half */
+    color: #333; /* Darker color for designer label */
+    /* text-shadow: 1px 1px 2px rgba(0,0,0,0.3); */
+    text-align: center;
+}
+
+.pie-label-coder {
+    right: 0; /* Position to the right half */
+    color: #f8f9fa; /* Lighter color for coder label */
+    /* text-shadow: 1px 1px 2px rgba(255,255,255,0.3); */
+    text-align: center;
+}
+
+/* My Skills Section (Bar Chart) - Revamped for vertical bars */
+#my-skills {
+    padding: 6rem 0;
+}
+
+.skills-grid {
+    display: flex; /* Use flexbox for vertical bars */
+    justify-content: center;
+    align-items: flex-end; /* Align bars to the bottom */
+    gap: 1.5rem; /* Gap between bars */
+    margin-top: 3rem;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.skill-item {
+    background: #f8f8f8;
+    padding: 1rem; /* Smaller padding */
+    border-radius: 8px;
+    text-align: center; /* Center content within item */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column; /* Stack name, bar, percentage vertically */
+    align-items: center;
+    width: 150px; /* Fixed width for each skill item for consistency */
+    min-height: 220px; /* Ensure enough height for all content */
+    justify-content: flex-end; /* Push content to the bottom */
+    position: relative; /* For positioning percentage */
+}
+
+.skill-name {
+    font-weight: 600;
+    font-size: 1rem; /* Slightly smaller font for skill name */
+    color: #333;
+    margin-bottom: 0.8rem; /* Space between name and bar */
+    order: 1; /* Display name first */
+}
+
+.skill-bar-container {
+    width: 40px; /* Width of the vertical bar */
+    height: 150px; /* Height of the bar container */
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 0.5rem; /* Space between bar and percentage */
+    display: flex;
+    align-items: flex-end; /* Align the filling bar to the bottom */
+    order: 2; /* Display bar second */
+}
+
+.skill-bar {
+    width: 100%; /* Full width within its 40px container */
+    height: 0%; /* Initial height 0% for animation, will be animated to data-skill-level */
+    background-color: #888; /* A neutral grey color, similar to Adham's */
+    border-radius: 5px;
+    /* transition: height 1.5s ease-out; This will be handled by GSAP */
+}
+
+/* Specific colors for skill bars (optional, if you want different colors like Adham's) */
+.skill-item:nth-child(1) .skill-bar { background-color: #87CEEB; } /* Light Blue */
+.skill-item:nth-child(2) .skill-bar { background-color: #90EE90; } /* Light Green */
+.skill-item:nth-child(3) .skill-bar { background-color: #FFD700; } /* Gold */
+.skill-item:nth-child(4) .skill-bar { background-color: #FFA07A; } /* Light Salmon */
+.skill-item:nth-child(5) .skill-bar { background-color: #DDA0DD; } /* Plum */
+.skill-item:nth-child(6) .skill-bar { background-color: #ADD8E6; } /* Light Blue again */
+
+
+.skill-percentage {
+    font-size: 1.1rem; /* Larger percentage text */
+    font-weight: 700; /* Bolder */
+    color: #333;
+    order: 3; /* Display percentage third */
+    margin-top: 10px; /* Space above percentage */
+}
+
+/* Random Facts Section - Revamped */
+#random-facts {
+    padding: 6rem 0;
+    background-color: #f8f9fa; /* Lighter background for this section */
+}
+
+#random-facts .yoda-img {
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 0; /* Remove margin-bottom as it will be side-by-side */
+    position: relative;
+    z-index: 1; /* Ensure Yoda image is above any potential background elements */
+}
+
+#random-facts .row {
+    align-items: center; /* Vertically center content */
+}
+
+.random-list {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+    padding-left: 20px; /* Indent the list for bullet points */
+}
+
+.random-list li::before {
+    content: "•"; /* Bullet point */
+    color: #333; /* Darker bullet point color */
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+
+/* === RESPONSIVE - MOBILE === */
+@media (max-width: 991.98px) {
+    #nav {
+        display: none !important;
+    }
+    .icon-nav {
+        display: block !important;
     }
 
-    .photo {
-        order: 1; /* Foto di atas teks */
-        max-width: 100%; /* Foto menyesuaikan layar */
-        aspect-ratio: 4 / 3; /* Mengubah aspect ratio menjadi 4:3 */
-        object-fit: cover;
-        border-radius: 10px;
-        max-height: 400px;
+    /* About page responsive */
+    #about-page .my-profile-img {
+        max-width: 250px; /* Smaller on mobile */
+        margin-top: 2rem; /* Add some space back */
     }
 
-    .about-text {
-        order: 2; /* Teks di bawah foto */
-        max-width: 100%;
-        padding: 10px;
-        padding-top: 400px;
+    #designer-coder .col-lg-5 {
+        text-align: center !important;
+        margin-bottom: 2rem;
+    }
+    #designer-coder .col-lg-2 {
+        order: -1;
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
-    .about-text h1 {
-        font-size: 28px;
+    .pie-chart-container {
+        margin: 0 auto 1rem auto;
+    }
+    .pie-label-designer, .pie-label-coder {
+        position: static; /* Reset positioning for mobile */
+        transform: none;
+        margin-top: 0.2rem;
+        display: inline-block;
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
+        text-shadow: none;
     }
 
-    .about-text p {
-        font-size: 16px;
+    /* My Skills Mobile Adjustment */
+    .skills-grid {
+        flex-direction: column; /* Stack skills vertically on small screens */
+        align-items: center; /* Center them */
+        gap: 1rem;
+    }
+    .skill-item {
+        width: 80%; /* Make skill items wider on mobile */
+        max-width: 300px; /* Limit max width */
+        flex-direction: row; /* Layout content horizontally within item */
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        min-height: auto;
+    }
+    .skill-name {
+        margin-bottom: 0;
+        margin-right: 1rem; /* Space between name and bar */
+        order: 1;
+        flex-basis: 30%; /* Give some space to the name */
+        text-align: left;
+    }
+    .skill-bar-container {
+        width: 120px; /* Make bar horizontal */
+        height: 10px; /* Keep height small */
+        order: 2;
+        margin-bottom: 0;
+        margin-right: 0.5rem;
+        align-items: center; /* Align filling bar horizontally */
+    }
+    .skill-bar {
+        height: 100%;
+        width: 0%; /* Animate width for horizontal bar */
+    }
+    .skill-percentage {
+        order: 3;
+        margin-top: 0;
+        font-size: 1rem;
+        flex-basis: 15%; /* Give some space to the percentage */
+        text-align: right;
+    }
+
+    #random-facts .yoda-img {
+        max-width: 250px;
+        margin-bottom: 1.5rem;
+    }
+    .random-list {
+        font-size: 1rem;
+    }
+    .section-heading h2 {
+        font-size: 1.5rem;
     }
 }
 
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+@media (max-width: 575.98px) {
+    #logo img {
+        height: 48px;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .project-card .card-body {
+        padding: 1rem;
+        min-height: auto;
+    }
+    .project-card .card-title {
+        font-size: 1rem;
+    }
+    .project-card .card-text {
+        font-size: 0.8rem;
+        height: auto;
+        -webkit-line-clamp: unset;
+    }
+    .project-card .btn {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+    #contact .fab, #contact .fas {
+        font-size: 2.5rem;
+    }
+
+    /* Further mobile adjustments for skills */
+    .skill-item {
+        width: 95%; /* Wider on very small screens */
+        padding: 0.8rem;
+    }
+    .skill-name {
+        font-size: 0.9rem;
+    }
+    .skill-percentage {
+        font-size: 0.9rem;
     }
 }
-
