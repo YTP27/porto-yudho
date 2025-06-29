@@ -1,19 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // ... (Kode yang tidak berubah di bagian atas) ...
-
-    // =============================
-    // NEW ANIMATIONS FOR about.html
-    // =============================
     if (window.location.pathname.endsWith('about.html')) {
         gsap.registerPlugin(ScrollTrigger);
 
-        // ... (About Section Entrance Animation dan Designer/Coder Pie Chart Animation - tidak berubah) ...
-
-        // =============================
-        // START - KODE SKILL SECTION DENGAN REVISI NaN%
-        // =============================
-
-        // 1. Data Skill Hardcoded (Dengan colorClass)
         const mySkillsData = [
             { name: "UI/UX Design", percentage: 95, colorClass: "skill-blue" },
             { name: "Front-end Development", percentage: 90, colorClass: "skill-green" },
@@ -23,14 +11,11 @@ document.addEventListener('DOMContentLoaded', function () {
             { name: "Visual Storytelling", percentage: 80, colorClass: "skill-red" }
         ];
 
-        // 2. Fungsi untuk Membuat dan Menampilkan Skill Bar Secara Dinamis
         function renderMySkills(skills) {
             const skillsContainer = document.querySelector('.skills-grid');
-            if (!skillsContainer) {
-                console.error("Error: Elemen kontainer skill dengan class '.skills-grid' tidak ditemukan di HTML.");
-                return;
-            }
-            skillsContainer.innerHTML = ''; // Bersihkan konten yang sudah ada
+            if (!skillsContainer) return;
+
+            skillsContainer.innerHTML = '';
 
             skills.forEach(skill => {
                 const skillItem = document.createElement('div');
@@ -39,49 +24,39 @@ document.addEventListener('DOMContentLoaded', function () {
                 const skillName = document.createElement('div');
                 skillName.classList.add('skill-name');
                 skillName.textContent = skill.name;
-                skillItem.appendChild(skillName);
 
                 const skillBarContainer = document.createElement('div');
                 skillBarContainer.classList.add('skill-bar-container');
-                skillItem.appendChild(skillBarContainer);
 
                 const skillBar = document.createElement('div');
-                skillBar.classList.add('skill-bar');
-                if (skill.colorClass) {
-                    skillBar.classList.add(skill.colorClass);
-                }
+                skillBar.classList.add('skill-bar', skill.colorClass);
                 skillBar.dataset.skillLevel = skill.percentage;
-                skillBar.style.height = '0%'; // Tinggi awal untuk animasi
+
                 skillBarContainer.appendChild(skillBar);
 
                 const skillPercentage = document.createElement('span');
                 skillPercentage.classList.add('skill-percentage');
-                skillPercentage.textContent = '0%'; // Teks awal untuk animasi
-                skillItem.appendChild(skillPercentage);
+                skillPercentage.textContent = '0%';
 
+                skillItem.appendChild(skillName);
+                skillItem.appendChild(skillBarContainer);
+                skillItem.appendChild(skillPercentage);
                 skillsContainer.appendChild(skillItem);
             });
 
-            // 3. Terapkan animasi GSAP setelah elemen dibuat dan ditambahkan ke DOM
-            gsap.utils.toArray(".skill-item").forEach((skillItem) => {
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
+            gsap.utils.toArray(".skill-item").forEach(skillItem => {
                 const skillBar = skillItem.querySelector(".skill-bar");
                 const skillPercentageElement = skillItem.querySelector(".skill-percentage");
-                
-                if (!skillBar || !skillPercentageElement) {
-                    console.warn("Could not find skillBar or skillPercentageElement for a skillItem. Skipping animation for this item.");
-                    return;
-                }
 
-                let skillLevel = parseFloat(skillBar.dataset.skillLevel);
+                const skillLevel = parseFloat(skillBar.dataset.skillLevel) || 0;
+                const isMobile = window.innerWidth <= 991.98;
 
-                if (isNaN(skillLevel)) {
-                    console.warn(`Peringatan: skillLevel tidak valid (${skillBar.dataset.skillLevel}) untuk skill: ${skillItem.querySelector('.skill-name')?.textContent || 'Tidak diketahui'}. Menggunakan 0%.`);
-                    skillLevel = 0;
-                }
+                gsap.set(skillBar, isMobile ? { width: "0%" } : { height: "0%" });
 
-                // Animasi untuk bar progress (tinggi)
                 gsap.to(skillBar, {
-                    height: skillLevel + "%",
+                    [isMobile ? "width" : "height"]: skillLevel + "%",
                     duration: 1.5,
                     ease: "power3.out",
                     scrollTrigger: {
@@ -92,11 +67,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 });
 
-                // Animasi untuk angka persentase (menghitung naik)
-                // Coba ubah target dari skillPercentageElement langsung ke objek polos
-                // agar properti 'value' tidak berpotensi konflik dengan DOM
-                gsap.to({ value: 0 }, { // Animasi objek polos dari 0
-                    value: skillLevel, // Menuju skillLevel
+                gsap.to({ value: 0 }, {
+                    value: skillLevel,
                     duration: 1.5,
                     ease: "power3.out",
                     scrollTrigger: {
@@ -105,23 +77,51 @@ document.addEventListener('DOMContentLoaded', function () {
                         toggleActions: "play none none none",
                         once: true
                     },
-                    onUpdate: function() {
-                        // `this.targets()[0]` sekarang mengacu pada objek polos { value: ... }
-                        // Jadi, kita langsung ambil nilainya
+                    onUpdate: function () {
                         skillPercentageElement.innerText = Math.round(this.targets()[0].value) + "%";
                     }
                 });
             });
         }
 
-        // 4. Panggil fungsi renderMySkills saat halaman about.html dimuat
         renderMySkills(mySkillsData);
 
-        // =============================
-        // END - KODE SKILL SECTION DENGAN REVISI NaN%
-        // =============================
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+                renderMySkills(mySkillsData);
+                ScrollTrigger.refresh();
+            }, 250);
+        });
 
-        // Random Facts Section Animation
+        // Pie Chart Animasi Designer vs Coder (60% Designer, 40% Coder contoh)
+        const pieChart = document.querySelector('.pie-chart');
+        if (pieChart) {
+            const totalAngle = 360;
+            const designerPercent = 60;
+            const coderPercent = 40;
+
+            const designerAngle = (designerPercent / 100) * totalAngle;
+            const coderAngle = (coderPercent / 100) * totalAngle;
+
+            gsap.set(pieChart, { background: "conic-gradient(#3498db 0deg 0deg, #333 0deg 0deg)" });
+
+            gsap.to(pieChart, {
+                background: `conic-gradient(#3498db 0deg ${designerAngle}deg, #2ecc71 ${designerAngle}deg ${totalAngle}deg)`,
+                duration: 2,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: pieChart,
+                    start: "top 85%",
+                    toggleActions: "play none none none",
+                    once: true
+                }
+            });
+        }
+
+        // Animasi Random Facts
         gsap.from("#random-facts .yoda-img, #random-facts .random-list li", {
             opacity: 0,
             y: 50,
@@ -132,6 +132,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 trigger: "#random-facts",
                 start: "top 80%",
                 toggleActions: "play none none none"
+            }
+        });
+
+        // Navbar background muncul saat scroll
+        const header = document.getElementById("header");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 50) {
+                header.classList.add("header-scrolled");
+            } else {
+                header.classList.remove("header-scrolled");
             }
         });
     }
