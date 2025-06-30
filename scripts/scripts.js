@@ -150,6 +150,27 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+
+    // Filter: hanya link internal (bukan target _blank atau mailto/tel)
+    if (!href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto')) {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Jalanin animasi keluar (contoh fade out body)
+            gsap.to("body", {
+                opacity: 0,
+                duration: 0.6,
+                ease: "power2.out",
+                onComplete: () => {
+                    window.location.href = href;
+                }
+            });
+        });
+    }
+});
+
 
 
 
