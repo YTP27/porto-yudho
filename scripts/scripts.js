@@ -106,8 +106,8 @@ document.addEventListener('DOMContentLoaded', function () {
         onEnter: () => {
             gsap.to(card, {
                 opacity: 1,
-                y: 0,
-                duration: 1.5,
+                x: 0,
+                duration: 5,
                 delay: i * 0.3, // Delay antar card, dari kiri ke kanan
                 ease: "power3.out"
             });
