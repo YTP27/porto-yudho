@@ -5,22 +5,21 @@ body {
     margin: 0;
     background-color: #fff;
     color: #333;
+    overflow-x: hidden; /* Mencegah horizontal scroll */
 }
 
-
-
 .project-page-content {
-    padding-top: 0; /* Adjust if you have a sticky header */
+    padding-top: 0;
 }
 
 .project-hero-section {
-    background-color: #fff; /* Atau warna background yang sesuai */
-    padding-bottom: 50px; /* Tambahan padding bawah */
+    background-color: #fff;
+    padding-bottom: 50px;
 }
 
 .project-title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 2.8rem; /* Ukuran lebih besar untuk judul proyek */
+    font-size: 2.8rem;
     font-weight: 700;
     color: #333;
     margin-bottom: 15px;
@@ -29,7 +28,7 @@ body {
 .project-description {
     font-size: 1.1rem;
     color: #555;
-    max-width: 800px; /* Batasi lebar deskripsi */
+    max-width: 800px;
     margin: 0 auto 25px auto;
     line-height: 1.6;
 }
@@ -51,33 +50,34 @@ body {
     color: #bbb;
 }
 
-/* Penyesuaian untuk project-main-image */
 .project-main-image {
-    max-width: 800px; /* Batasi lebar maksimum gambar utama */
-    margin: 50px auto 0 auto; /* Tengah dan beri margin atas */
-    border-radius: 12px; /* Sedikit rounded corner */
-    overflow: hidden; /* Pastikan gambar tidak keluar dari batas */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Tambahkan shadow */
-    display: flex; /* Untuk memastikan gambar rata tengah di dalamnya */
+    max-width: 800px;
+    margin: 50px auto 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0; /* Background jika gambar transparan */
+    background-color: #f0f0f0;
 }
 
 .project-main-image img {
-    max-width: 100%; /* Pastikan gambar tidak melebihi lebar containernya */
+    max-width: 100%;
     height: auto;
-    display: block; /* Menghilangkan spasi ekstra di bawah gambar */
+    display: block;
 }
 
 .project-content-narrow {
-    max-width: 800px; /* Memastikan konten teks di tengah dan rapi */
+    max-width: 800px;
     margin: 0 auto;
+    padding: 0 1rem; /* Tambahan: padding responsif */
+    box-sizing: border-box; /* Tambahan: supaya padding gak nambah lebar */
 }
 
 .project-section-text {
     padding: 60px 0;
-    background-color: #fff; /* Pastikan background putih */
+    background-color: #fff;
 }
 
 .project-section-text h2 {
@@ -85,7 +85,7 @@ body {
     font-weight: 600;
     margin-bottom: 30px;
     color: #333;
-    text-align: center; /* Heading di tengah */
+    text-align: center;
 }
 
 .project-section-text p {
@@ -97,7 +97,7 @@ body {
 
 .project-section-visual {
     padding: 60px 0;
-    background-color: #f8f8f8; /* Background untuk visual section */
+    background-color: #f8f8f8;
 }
 
 .project-section-visual h2 {
@@ -123,7 +123,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     gap: 15px;
     margin-top: 30px;
-    justify-content: center; /* Memastikan grid rata tengah jika tidak penuh */
+    justify-content: center;
 }
 
 .color-swatch {
@@ -139,12 +139,18 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
-.typography-example-card {
+.typography-example-card,
+.component-card,
+.color-token-explanation-card,
+.transparent-overlay-example {
     background: #fff;
     border: 1px solid #eee;
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
     padding: 30px;
+}
+
+.typography-example-card {
     text-align: left;
 }
 
@@ -153,22 +159,6 @@ body {
     color: #777;
     font-weight: 400;
     margin-left: 10px;
-}
-
-.component-card {
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
-    padding: 30px;
-}
-
-.color-token-explanation-card {
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
-    padding: 30px;
 }
 
 .color-token-explanation-card ul {
@@ -182,18 +172,12 @@ body {
 }
 
 .transparent-overlay-example {
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
-    padding: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 250px;
 }
 
-/* === SECTION HEADING WITH LINES (Used on Project Page too) === */
 .section-heading {
     display: flex;
     align-items: center;
@@ -203,8 +187,8 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 600;
-    font-size: 1rem; /* Ukuran font heading section */
-    margin-bottom: 40px; /* Jarak bawah heading section */
+    font-size: 1rem;
+    margin-bottom: 40px;
 }
 
 .section-heading::before,
@@ -213,11 +197,10 @@ body {
     flex: 1;
     height: 1px;
     max-width: 150px;
-    background-color: #ddd; /* Warna garis yang lebih terang */
+    background-color: #ddd;
     opacity: 0.8;
 }
 
-/* === MORE PROJECTS SECTION (FROM INDEX.HTML BUT ALSO USED HERE) === */
 #more-projects {
     padding: 80px 0;
     background-color: #f8f8f8;
@@ -225,9 +208,9 @@ body {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Grid responsif */
-    gap: 30px; /* Jarak antar card */
-    margin-top: 50px; /* Jarak dari heading section */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
 }
 
 .project-card {
@@ -244,7 +227,7 @@ body {
 
 .project-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15); /* Shadow lebih menonjol saat hover */
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15);
 }
 
 .project-image-wrapper {
@@ -259,15 +242,15 @@ body {
 }
 
 .project-thumb {
-    background-color: #fff; /* Mengubah background thumbnail jadi putih */
+    background-color: #fff;
     width: 100%;
-    max-width: 90%; /* Mengurangi sedikit max-width thumbnail */
+    max-width: 90%;
     padding: 20px;
-    border-radius: 8px; /* Mengurangi border-radius sedikit */
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Shadow pada thumbnail */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .project-thumb img {
@@ -286,17 +269,17 @@ body {
 }
 
 .project-card .card-title {
-    font-size: 1.15rem; /* Sedikit lebih besar */
+    font-size: 1.15rem;
     font-weight: 600;
     margin-bottom: 0.4rem;
     color: #222;
 }
 
 .project-card .card-text {
-    font-size: 0.95rem; /* Sedikit lebih besar */
+    font-size: 0.95rem;
     color: #555;
-    margin-bottom: 15px; /* Menambah margin bawah */
-    height: 44px; /* Menyesuaikan tinggi untuk 2 baris */
+    margin-bottom: 15px;
+    height: 44px;
     line-height: 22px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -307,11 +290,11 @@ body {
 
 .project-card .btn {
     font-size: 0.85rem;
-    padding: 0.5rem 1rem; /* Padding tombol sedikit lebih besar */
-    border-radius: 25px; /* Lebih rounded */
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
     margin-top: auto;
     color: #666;
-    border: 1px solid #ccc; /* Border yang lebih jelas */
+    border: 1px solid #ccc;
     background-color: #fff;
     transition: all 0.2s ease;
 }
@@ -322,11 +305,10 @@ body {
     border-color: #666;
 }
 
-/* === FOOTER (GET IN TOUCH) === */
 #contact {
-    background-color: #222; /* Background hitam gelap */
+    background-color: #222;
     color: #fff;
-    padding: 60px 0 30px 0; /* Padding atas bawah */
+    padding: 60px 0 30px 0;
     text-align: center;
 }
 
@@ -341,7 +323,7 @@ body {
 #contact .social-footer {
     display: flex;
     justify-content: center;
-    gap: 20px; /* Jarak antar ikon */
+    gap: 20px;
     list-style: none;
     padding: 0;
     margin-bottom: 30px;
@@ -349,7 +331,7 @@ body {
 
 #contact .social-footer li a {
     color: #ccc;
-    font-size: 2.2rem; /* Ukuran ikon lebih besar */
+    font-size: 2.2rem;
     transition: color 0.2s ease;
 }
 
@@ -361,11 +343,10 @@ body {
     font-size: 0.9rem;
     color: #888;
     margin-top: 20px;
-    border-top: 1px solid #333; /* Garis di atas copyright */
+    border-top: 1px solid #333;
     padding-top: 20px;
 }
 
-/* === MOBILE MENU DEFAULT HIDDEN === */
 .mobile-menu {
     position: fixed;
     top: 70px;
@@ -400,108 +381,102 @@ body {
     color: #ddd;
 }
 
-
-/* === RESPONSIVE - MOBILE === */
 @media (max-width: 768px) {
-
     #header {
         padding: 10px 15px;
     }
-
     #logo img {
         height: 48px;
     }
-
     .icon-nav {
         display: block;
     }
-
     #nav {
         display: none;
     }
-
-    /* Project Page Responsiveness */
     .project-title {
         font-size: 2rem;
     }
-
     .project-description {
         font-size: 1rem;
     }
-
     .project-meta {
         flex-direction: column;
         gap: 10px;
     }
-
     .meta-item + .meta-item::before {
-        content: none; /* Hapus pemisah di mobile */
+        content: none;
     }
-
     .project-main-image {
-        margin-top: 30px; /* Kurangi margin atas di mobile */
+        margin-top: 30px;
     }
-
     .project-section-text,
     .project-section-visual,
     #more-projects {
         padding: 40px 0;
     }
-
     .project-section-text h2,
     .project-section-visual h2 {
         font-size: 1.5rem;
         margin-bottom: 20px;
     }
-
     .color-palette-grid {
         grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
         gap: 10px;
     }
-
     .project-card .btn {
         font-size: 0.8rem;
         padding: 0.4rem 0.8rem;
     }
-
     #contact {
         padding: 40px 0 20px 0;
     }
-
     #contact h2 {
         font-size: 1.8rem;
         margin-bottom: 20px;
     }
-
     #contact .social-footer {
         gap: 15px;
         margin-bottom: 20px;
     }
-
     #contact .social-footer li a {
         font-size: 1.8rem;
     }
-
     .section-heading {
         font-size: 0.85rem;
     }
-
     .section-heading::before,
     .section-heading::after {
         max-width: 50px;
     }
 }
 
+.color-token-explanation-card img,
+.project-section-text img,
+.project-section-visual img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
 @media (max-width: 576px) {
     #logo img {
         height: 40px;
     }
-
     .project-title {
         font-size: 1.6rem;
     }
-
     .project-description {
         font-size: 0.9rem;
+    }
+    .color-token-explanation-card {
+        padding: 20px;
+    }
+    .color-token-explanation-card img {
+        margin-bottom: 16px;
     }
 }
