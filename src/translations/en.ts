@@ -12,7 +12,7 @@ export const en = {
     name: 'Yudho Tri Putranto',
     subtitle: 'I turn complex problems into simple, user-friendly experiences',
     description:
-      'QA Engineer and UI/UX Designer based in Depok, Indonesia. I help teams ship quality products that people actually enjoy using.',
+      'Ensuring every release is reliable, stable, and ready for users through comprehensive quality assurance.',
     cta_resume: 'Download CV',
     cta_about: 'More About Me',
     cta_projects: 'View Projects',

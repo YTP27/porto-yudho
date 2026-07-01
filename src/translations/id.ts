@@ -12,7 +12,7 @@ export const id: typeof import('./en').en = {
     name: 'Yudho Tri Putranto',
     subtitle: 'Saya ubah masalah rumit jadi pengalaman yang sederhana dan ramah pengguna',
     description:
-      'QA Engineer dan UI/UX Designer dari Depok, Indonesia. Saya bantu tim mengirim produk berkualitas yang benar-benar nyaman dipakai.',
+      'Memastikan setiap rilis andal, stabil, dan siap dipakai melalui quality assurance yang menyeluruh.',
     cta_resume: 'Unduh CV',
     cta_about: 'Tentang Saya',
     cta_projects: 'Lihat Proyek',
