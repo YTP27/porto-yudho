@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import ProjectCard from '../components/ProjectCard'
 import FloatingOrbs from '../components/FloatingOrbs'
 import WordReveal from '../components/WordReveal'
+import Typewriter from '../components/Typewriter'
 import { projects } from '../data/projects'
 import Contact from '../components/Contact'
 import { useLang } from '../contexts/LanguageContext'
@@ -71,9 +72,7 @@ export default function Home() {
             {t.hero.greeting}{' '}
             <WordReveal text={t.hero.name} className="gradient-text" />
             <br />
-            <span className="text-2xl sm:text-3xl lg:text-4xl font-normal" style={{ color: 'var(--text-secondary)' }}>
-              {t.hero.subtitle}
-            </span>
+            <Typewriter text={t.hero.subtitle} className="text-2xl sm:text-3xl lg:text-4xl font-normal subtitle-typing" delay={2.2} />
           </motion.h1>
 
           <motion.p

@@ -10,7 +10,7 @@ export const id: typeof import('./en').en = {
     badge: 'QA Engineer & UI/UX Designer',
     greeting: 'Halo, saya',
     name: 'Yudho Tri Putranto',
-    subtitle: 'Saya ubah masalah rumit jadi pengalaman yang sederhana dan manusiawi',
+    subtitle: 'Saya ubah masalah rumit jadi pengalaman yang sederhana dan ramah pengguna',
     description:
       'QA Engineer dan UI/UX Designer dari Depok, Indonesia. Saya bantu tim mengirim produk berkualitas yang benar-benar nyaman dipakai.',
     cta_resume: 'Unduh CV',

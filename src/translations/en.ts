@@ -10,7 +10,7 @@ export const en = {
     badge: 'QA Engineer & UI/UX Designer',
     greeting: "Hi, I'm",
     name: 'Yudho Tri Putranto',
-    subtitle: 'I turn complex problems into simple, human-friendly experiences',
+    subtitle: 'I turn complex problems into simple, user-friendly experiences',
     description:
       'QA Engineer and UI/UX Designer based in Depok, Indonesia. I help teams ship quality products that people actually enjoy using.',
     cta_resume: 'Download CV',
