@@ -1,9 +1,7 @@
 export interface Experience {
   company: string
   role: string
-  type: string
   period: string
-  location: string
   logo: string
   highlights: string[]
 }
@@ -12,9 +10,7 @@ export const experiences: Experience[] = [
   {
     company: 'PT. IDstar Cipta Teknologi',
     role: 'Quality Assurance Engineer',
-    type: 'Contract',
     period: 'October 2025 - Present',
-    location: 'Depok, Indonesia',
     logo: '/images/IDstar logo.webp',
     highlights: [
       'Designed, executed, and maintained test cases for web and mobile applications based on business and system requirements.',
@@ -28,9 +24,7 @@ export const experiences: Experience[] = [
   {
     company: 'PT. Zealtech Solution Indonesia',
     role: 'Software QA Engineer',
-    type: 'Contract',
     period: 'October 2024 - October 2025',
-    location: 'Depok, Indonesia',
     logo: '/images/zealtech solution indonesia.png',
     highlights: [
       'Led QA activities across multiple client projects, including test planning, test design, test execution, defect management, and release validation.',
@@ -42,9 +36,7 @@ export const experiences: Experience[] = [
   {
     company: 'Elisoft Technology',
     role: 'QA Engineer',
-    type: 'Project Based',
     period: 'July 2024 - October 2024',
-    location: 'Depok, Indonesia',
     logo: '/images/elisoft.jpg',
     highlights: [
       'Led Quality Assurance activities for web and Progressive Web Application (PWA) development projects.',
