@@ -3,14 +3,14 @@ import Contact from '../components/Contact'
 import { useLang } from '../contexts/LanguageContext'
 
 const skills = [
-  { name: '⚡ Breaking Assumptions, Not Production', level: 95 },
-  { name: '🐛 Finding Bugs Before Users Do', level: 92 },
-  { name: '🧪 Exploratory Testing', level: 90 },
-  { name: '🤨 Skeptical of "Works on My Machine"', level: 88 },
-  { name: '📋 Writing Bug Reports Devs Actually Read', level: 91 },
-  { name: '🤖 Turning Repetition into Automation', level: 88 },
-  { name: '☕ Caffeine Powered QA Engineer', level: 500 },
-  { name: '🤝 Low Ego, High Teamwork', level: 95 },
+  { name: 'Breaking Assumptions, Not Production', level: 95 },
+  { name: 'Finding Bugs Before Users Do', level: 92 },
+  { name: 'Exploratory Testing', level: 90 },
+  { name: 'Skeptical of "Works on My Machine"', level: 88 },
+  { name: 'Writing Bug Reports Devs Actually Read', level: 91 },
+  { name: 'Turning Repetition into Automation', level: 88 },
+  { name: 'Caffeine Powered QA Engineer', level: 500 },
+  { name: 'Low Ego, High Teamwork', level: 95 },
 ]
 
 const tools = [
