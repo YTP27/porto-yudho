@@ -1,30 +1,38 @@
 import { motion } from 'framer-motion'
 import Contact from '../components/Contact'
+import { useLang } from '../contexts/LanguageContext'
 
 const skills = [
-  { name: 'UI/UX Design', level: 90 },
-  { name: 'Front-end Dev', level: 80 },
-  { name: 'QA Automation', level: 95 },
-  { name: 'Prototyping', level: 85 },
-  { name: 'Problem Solving', level: 90 },
-  { name: 'Visual Storytelling', level: 75 },
+  { name: '⚡ Breaking Assumptions, Not Production', level: 95 },
+  { name: '🐛 Finding Bugs Before Users Do', level: 92 },
+  { name: '🧪 Exploratory Testing', level: 90 },
+  { name: '🤨 Skeptical of "Works on My Machine"', level: 88 },
+  { name: '📋 Writing Bug Reports Devs Actually Read', level: 91 },
+  { name: '🤖 Turning Repetition into Automation', level: 88 },
+  { name: '☕ Caffeine Powered QA Engineer', level: 500 },
+  { name: '🤝 Low Ego, High Teamwork', level: 95 },
 ]
 
-const facts = [
-  "I'm slightly addicted to learning new things.",
-  'Love exploring tech blogs and design articles.',
-  'I enjoy creating things, whether it is code or designs.',
-  'Yoda is my mentor (in spirit).',
-  'A good cup of coffee is essential.',
-  'Still searching for the perfect keyboard.',
+const tools = [
+  { name: 'Playwright', icon: '/icons/playwright.svg' },
+  { name: 'Selenium', icon: '/icons/selenium.svg' },
+  { name: 'Katalon Studio', icon: '/icons/katalon.svg' },
+  { name: 'Postman', icon: '/icons/postman.svg' },
+  { name: 'Jira', icon: '/icons/jira.svg' },
+  { name: 'Trello', icon: '/icons/trello.svg' },
+  { name: 'Spreadsheet', icon: '/icons/spreadsheet.svg' },
+  { name: 'Manual Testing', icon: '/icons/manual-testing.svg' },
+  { name: 'VS Code', icon: '/icons/vscode.svg' },
+  { name: 'JavaScript', icon: '/icons/javascript.svg' },
+  { name: 'GitHub', icon: '/icons/github.svg' },
+  { name: 'Figma', icon: '/icons/figma.svg' },
 ]
 
 export default function About() {
-
+  const { t } = useLang()
 
   return (
     <div className="pt-24">
-      {/* Hero */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -33,18 +41,14 @@ export default function About() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-4xl sm:text-5xl font-bold text-white">
-                About<span className="gradient-text">.</span>
+              <h1 className="text-4xl sm:text-5xl font-bold" style={{ color: 'var(--text-primary)' }}>
+                {t.about.title}<span className="gradient-text">.</span>
               </h1>
-              <p className="text-lg text-white/80 mt-6 leading-relaxed">
-                I'm Yudho Tri Putranto, a passionate QA Engineer with a keen eye for UI/UX design.
-                Based in Depok, Indonesia.
+              <p className="text-lg mt-6 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+                {t.about.intro}
               </p>
-              <p className="text-muted mt-4 leading-relaxed">
-                Since 2021, I have enjoyed tackling complex problems, transforming them into simple,
-                beautiful, and intuitive solutions. When I am not diving into code or perfecting user
-                flows, you will find me exploring new design trends, learning new technologies, or
-                simply enjoying a good cup of coffee.
+              <p className="mt-4 leading-relaxed" style={{ color: 'var(--text-muted)' }}>
+                {t.about.description}
               </p>
             </motion.div>
             <motion.div
@@ -55,19 +59,21 @@ export default function About() {
             >
               <div className="relative">
                 <img
-                  src="/images/abstractoduy.png"
+                  src="/images/yudho personal 1.jpeg"
                   alt="Yudho Tri Putranto"
                   className="max-w-xs sm:max-w-sm rounded-2xl"
                 />
-                <div className="absolute -bottom-4 -right-4 w-full h-full rounded-2xl border border-accent/20 -z-10" />
+                <div
+                  className="absolute -bottom-4 -right-4 w-full h-full rounded-2xl -z-10"
+                  style={{ border: '2px solid var(--color-accent)', opacity: 0.2 }}
+                />
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Designer / Coder */}
-      <section className="py-16 bg-surface">
+      <section className="py-16" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-8 items-center">
             <motion.div
@@ -76,10 +82,12 @@ export default function About() {
               viewport={{ once: true }}
               className="text-center lg:text-right"
             >
-              <h3 className="text-xl font-bold text-accent mb-6">Part designer</h3>
+              <h3 className="text-xl font-bold mb-6" style={{ color: 'var(--color-accent)' }}>
+                {t.about.coder}
+              </h3>
               <ul className="space-y-3">
-                {['UI design', 'UX design', 'Prototyping', 'Visual Storytelling', 'Wireframing'].map((s) => (
-                  <li key={s} className="text-muted">{s}</li>
+                {t.about.coderSkills.map((s) => (
+                  <li key={s} style={{ color: 'var(--text-muted)' }}>{s}</li>
                 ))}
               </ul>
             </motion.div>
@@ -92,17 +100,17 @@ export default function About() {
             >
               <div className="relative w-48 h-48 sm:w-56 sm:h-56">
                 <svg className="w-full h-full -rotate-90" viewBox="0 0 36 36">
-                  <circle cx="18" cy="18" r="15.9" fill="none" stroke="#2a2a3a" strokeWidth="2.5" />
+                  <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--border-color)" strokeWidth="2.5" />
                   <circle
-                    cx="18" cy="18" r="15.9" fill="none" stroke="#06d6a0"
-                    strokeWidth="2.5" strokeDasharray={`${60 * 2.512} ${100 * 2.512}`}
+                    cx="18" cy="18" r="15.9" fill="none" stroke="var(--color-accent)"
+                    strokeWidth="2.5" strokeDasharray={`${2 * Math.PI * 15.9 * 60 / 100} ${2 * Math.PI * 15.9}`}
                     strokeLinecap="round"
                     className="transition-all duration-1000"
                   />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-2xl font-bold text-white">60/40</span>
-                  <span className="text-xs text-muted mt-1">Designer / Coder</span>
+                  <span className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>60/40</span>
+                  <span className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>{t.about.ratio_label}</span>
                 </div>
               </div>
             </motion.div>
@@ -113,10 +121,12 @@ export default function About() {
               viewport={{ once: true }}
               className="text-center lg:text-left"
             >
-              <h3 className="text-xl font-bold text-accent mb-6">Part coder</h3>
+              <h3 className="text-xl font-bold mb-6" style={{ color: 'var(--color-accent)' }}>
+                {t.about.designer}
+              </h3>
               <ul className="space-y-3">
-                {['Front-end development', 'HTML / CSS', 'JavaScript (React)', 'QA Automation (Playwright)', 'Problem Solving'].map((s) => (
-                  <li key={s} className="text-muted">{s}</li>
+                {t.about.designerSkills.map((s) => (
+                  <li key={s} style={{ color: 'var(--text-muted)' }}>{s}</li>
                 ))}
               </ul>
             </motion.div>
@@ -124,16 +134,16 @@ export default function About() {
         </div>
       </section>
 
-      {/* Skills */}
       <section className="py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-white text-center mb-12"
+            className="text-3xl font-bold text-center mb-12"
+            style={{ color: 'var(--text-primary)' }}
           >
-            My Skills
+            {t.about.skills_title}
           </motion.h2>
 
           <div className="space-y-6">
@@ -146,16 +156,19 @@ export default function About() {
                 transition={{ delay: i * 0.1 }}
               >
                 <div className="flex justify-between mb-2">
-                  <span className="text-sm font-medium text-white">{skill.name}</span>
-                  <span className="text-sm text-accent font-mono">{skill.level}%</span>
+                  <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{skill.name}</span>
+                  <span className="text-sm font-mono" style={{ color: 'var(--color-accent)' }}>{skill.level}%</span>
                 </div>
-                <div className="h-2 rounded-full bg-card overflow-hidden">
+                <div className="h-2 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--bg-card)' }}>
                   <motion.div
-                    className="h-full rounded-full skill-bar"
+                    className="h-full rounded-full"
                     initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
+                    whileInView={{ width: `${Math.min(skill.level, 100)}%` }}
                     viewport={{ once: true }}
                     transition={{ duration: 1.2, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    style={{
+                      background: 'linear-gradient(90deg, var(--color-accent), var(--color-accent-light))',
+                    }}
                   />
                 </div>
               </motion.div>
@@ -164,8 +177,37 @@ export default function About() {
         </div>
       </section>
 
-      {/* Facts */}
-      <section className="py-16 bg-surface">
+      <section className="py-16" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl font-bold text-center mb-12"
+            style={{ color: 'var(--text-primary)' }}
+          >
+            {t.about.tools_title}
+          </motion.h2>
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+            {tools.map((tool, i) => (
+              <motion.div
+                key={tool.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="flex flex-col items-center gap-2 p-3 rounded-xl"
+                style={{ backgroundColor: 'var(--bg-card)' }}
+              >
+                <img src={tool.icon} alt={tool.name} className="h-8 w-8 object-contain" />
+                <span className="text-xs text-center leading-tight" style={{ color: 'var(--text-muted)' }}>{tool.name}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -185,9 +227,11 @@ export default function About() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-bold text-white mb-8">Random Facts</h2>
+              <h2 className="text-3xl font-bold mb-8" style={{ color: 'var(--text-primary)' }}>
+                {t.about.facts_title}
+              </h2>
               <ul className="space-y-4">
-                {facts.map((fact, i) => (
+                {t.about.facts.map((fact, i) => (
                   <motion.li
                     key={i}
                     initial={{ opacity: 0, y: 10 }}
@@ -196,8 +240,11 @@ export default function About() {
                     transition={{ delay: i * 0.1 }}
                     className="flex items-start gap-3"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
-                    <span className="text-muted">{fact}</span>
+                    <span
+                      className="w-1.5 h-1.5 rounded-full mt-2 shrink-0"
+                      style={{ backgroundColor: 'var(--color-accent)' }}
+                    />
+                    <span style={{ color: 'var(--text-muted)' }}>{fact}</span>
                   </motion.li>
                 ))}
               </ul>

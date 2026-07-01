@@ -1,73 +1,91 @@
-# React + TypeScript + Vite
+# Yudho Tri Putranto - Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio website built with **React 19**, **TypeScript**, **Vite**, and **Tailwind CSS v4**.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Dark / Light Mode** — Theme toggle with system preference detection
+- **EN / ID Translation** — Full bilingual support (English & Indonesian)
+- **Responsive Design** — Mobile-first, works on all screen sizes
+- **Tab Switching** — Home page toggles between Projects & Experience sections without page navigation
+- **Creative UI** — Friendly, modern interface with glassmorphism, timeline layout, and smooth animations (Framer Motion)
 
-## React Compiler
+## Pages
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Route | Description |
+|---|---|
+| `/` | Home — Hero + tab-switchable Projects / Work Experience |
+| `/projects` | All projects (direct access) |
+| `/experience` | Work experience timeline (direct access) |
+| `/projects/:id` | Project detail view |
+| `/about` | About me, skills, fun facts |
+| `/resume` | View / download CV |
 
-## Expanding the ESLint configuration
+## Projects
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Project | Role |
+|---|---|
+| INDICO Engage by Telkomsel | QA PIC |
+| MAYZAR ERP & POS SYSTEM | QA PIC |
+| ACPEDIA PLATFORM | QA PIC |
+| XLSATU Migration Project | QA PIC |
+| ESS XLSMART (Enterprise HCIS) | QA PIC |
+| SIDIVA XLSMART Mobile App | QA Engineer |
+| D'Farm Dream - IoT Poultry Platform | QA PIC & UI/UX Designer |
+| OrangeHRM - QA Automation | QA Engineer |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Work Experience
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+| Company | Role | Period |
+|---|---|---|
+| PT. IDstar Cipta Teknologi | Quality Assurance Engineer | Oct 2025 - Present |
+| PT. Zealtech Solution Indonesia | Software QA Engineer | Oct 2024 - Oct 2025 |
+| Elisoft Technology | QA Engineer | Jul 2024 - Oct 2024 |
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Tech Stack
+
+- **React 19** + Hooks (Context for theme & language state)
+- **TypeScript** — Fully typed
+- **Vite** — Fast dev server & build
+- **Tailwind CSS v4** — Utility-first styling
+- **Framer Motion** — Page, scroll & tab-switch animations
+- **React Router v7** — Client-side routing
+
+## Getting Started
+
+```bash
+npm install
+npm run dev        # Dev server → http://localhost:5173
+npm run build      # Production build → dist/
+npm run preview    # Preview production build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Project Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+  contexts/
+    ThemeContext.tsx      # Dark/light mode state
+    LanguageContext.tsx   # EN/ID language state
+  translations/
+    en.ts                # English strings
+    id.ts                # Indonesian strings
+  components/
+    Header.tsx            # Navbar with theme/lang toggles
+    Footer.tsx            # Footer with links & toggles
+    Contact.tsx           # Contact section
+    ProjectCard.tsx       # Project card component
+  pages/
+    Home.tsx              # Hero + tab-switchable sections
+    About.tsx             # About page
+    Experience.tsx        # Work experience page
+    Projects.tsx          # All projects page
+    ProjectDetail.tsx     # Project detail page
+    Resume.tsx            # Resume/CV page
+  data/
+    projects.ts           # All 8 project entries
+    experience.ts         # Work experience entries
+public/images/
+  {project-name}/         # Per-project image folders
+  CV Yudho Tri Putranto_en.pdf
 ```
