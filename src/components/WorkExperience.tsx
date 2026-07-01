@@ -77,7 +77,6 @@ export default function WorkExperience() {
                     </div>
                     <div className="text-xs sm:text-right" style={{ color: 'var(--text-muted)' }}>
                       <span className="block">{exp.period.replace('Present', t.experience.present)}</span>
-                      <span>{exp.type} &middot; {exp.location}</span>
                     </div>
                   </div>
 
