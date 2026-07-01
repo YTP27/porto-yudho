@@ -43,9 +43,7 @@ export default function Header() {
               alt="YTP"
               className="h-8 w-auto"
             />
-            <span className="font-semibold text-lg hidden sm:inline" style={{ color: 'var(--text-primary)' }}>
-              Yudho Tri Putranto
-            </span>
+            <span className="sr-only">Yudho Tri Putranto</span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">

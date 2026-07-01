@@ -21,7 +21,7 @@ export const projects: Project[] = [
     id: 'indico',
     title: 'INDICO Engage by Telkomsel',
     role: 'QA PIC',
-    date: '2025',
+    date: '2025 - 2026',
     description:
       'Led end-to-end QA for an AI-powered digital engagement platform. Managed 500+ test cases and coordinated UAT across multiple Agile sprint cycles.',
     longDescription: [
@@ -50,7 +50,7 @@ export const projects: Project[] = [
     id: 'mayzar',
     title: 'MAYZAR ERP & POS SYSTEM',
     role: 'QA PIC',
-    date: '2025',
+    date: '2024 - 2025',
     description:
       'Led QA for an ERP and Point-of-Sale system from ground-up development to production. Focused on business process accuracy and release readiness.',
     longDescription: [
@@ -82,7 +82,7 @@ export const projects: Project[] = [
     id: 'acpedia',
     title: 'ACPEDIA PLATFORM',
     role: 'QA PIC',
-    date: '2025',
+    date: '2024 - 2025',
     description:
       'QA lead for a service management platform handling sales, installation, and maintenance workflows. Built automated regression suites to speed up releases.',
     longDescription: [
@@ -114,7 +114,7 @@ export const projects: Project[] = [
     id: 'xlsatu',
     title: 'XLSATU Migration Project',
     role: 'QA PIC',
-    date: '2025',
+    date: '2026',
     description:
       'Led QA for a cloud migration from AWS to Tencent Cloud. Validated 50+ scenarios across purchasing, payments, and microservices with zero downtime.',
     longDescription: [
@@ -142,7 +142,7 @@ export const projects: Project[] = [
     id: 'ess',
     title: 'ESS XLSMART (Enterprise HCIS System)',
     role: 'QA PIC',
-    date: '2025',
+    date: '2026',
     description:
       'QA lead for an HCIS platform migration. Ran 90+ test cases across 22 integrated services to validate HR workflows end to end.',
     longDescription: [
@@ -169,7 +169,7 @@ export const projects: Project[] = [
     id: 'sidiva',
     title: 'SIDIVA XLSMART Mobile Application',
     role: 'QA Engineer',
-    date: '2025',
+    date: '2026',
     description:
       'Handled regression testing and feature validation for a mobile app\u2019s purchasing and payment modules. Focused on transaction reliability and user experience.',
     longDescription: [
@@ -199,7 +199,7 @@ export const projects: Project[] = [
     id: 'dfarm',
     title: "D'Farm Dream - IoT Poultry Platform",
     role: 'QA PIC & UI/UX Designer',
-    date: 'October 2024',
+    date: '2024',
     description:
       'QA lead and UI/UX designer for Indonesia\u2019s first IoT-connected poultry farm platform. Spanned Web, PWA, and ERP integrations.',
     longDescription: [
@@ -239,7 +239,7 @@ export const projects: Project[] = [
     id: 'orangehrm',
     title: 'OrangeHRM - QA Automation',
     role: 'QA Engineer',
-    date: 'June 2025',
+    date: '2025',
     description:
       'Built a Playwright automation framework for OrangeHRM. Covers employee management, leave, and recruitment with data-driven tests and structured reporting.',
     longDescription: [
