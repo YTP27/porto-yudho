@@ -75,7 +75,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
             </p>
             <div className="flex items-center gap-1 mt-3 text-sm font-medium" style={{ color: 'var(--color-accent)' }}>
               <span>{t.projects.view}</span>
-              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </div>
