@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import type { Project } from '../data/projects'
@@ -7,8 +7,12 @@ import { useLang } from '../contexts/LanguageContext'
 export default function ProjectCard({ project, index }: { project: Project; index: number }) {
   const { t } = useLang()
   const cardRef = useRef<HTMLDivElement>(null)
+  const [isTouch, setIsTouch] = useState(false)
+
+  useEffect(() => { setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0) }, [])
 
   const handleMouse = (e: React.MouseEvent) => {
+    if (isTouch) return
     const rect = cardRef.current?.getBoundingClientRect()
     if (!rect) return
     const x = e.clientX - rect.left
@@ -19,8 +23,6 @@ export default function ProjectCard({ project, index }: { project: Project; inde
     const rotateY = ((x - cx) / cx) * 6
     cardRef.current?.style.setProperty('--rx', `${rotateX}deg`)
     cardRef.current?.style.setProperty('--ry', `${rotateY}deg`)
-    cardRef.current?.style.setProperty('--sx', `${x}px`)
-    cardRef.current?.style.setProperty('--sy', `${y}px`)
   }
 
   const handleLeave = () => {
@@ -35,7 +37,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.6, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
     >
-      <Link to={`/projects/${project.id}`} className="group block perspective-[1000px]">
+      <Link to={`/projects/${project.id}`} className="group block">
         <div
           ref={cardRef}
           onMouseMove={handleMouse}
@@ -43,8 +45,8 @@ export default function ProjectCard({ project, index }: { project: Project; inde
           className="glass rounded-2xl overflow-hidden card-hover"
           style={{
             backgroundColor: 'var(--bg-card)',
-            transform: 'rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg))',
-            transition: 'transform 0.15s ease-out',
+            transform: isTouch ? 'none' : 'rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg))',
+            transition: isTouch ? '' : 'transform 0.15s ease-out',
             position: 'relative',
           }}
         >

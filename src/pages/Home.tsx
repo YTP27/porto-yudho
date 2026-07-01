@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import ProjectCard from '../components/ProjectCard'
@@ -9,13 +9,21 @@ import { experiences } from '../data/experience'
 
 type Section = 'projects' | 'experience'
 
+function useIsTouch() {
+  const [isTouch, setIsTouch] = useState(false)
+  useEffect(() => { setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0) }, [])
+  return isTouch
+}
+
 export default function Home() {
   const { t } = useLang()
   const [active, setActive] = useState<Section>('projects')
   const [mousePos, setMousePos] = useState({ x: -999, y: -999 })
   const heroRef = useRef<HTMLDivElement>(null)
+  const isTouch = useIsTouch()
 
   const handleMouse = (e: React.MouseEvent) => {
+    if (isTouch) return
     const rect = heroRef.current?.getBoundingClientRect()
     if (rect) {
       setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top })
@@ -30,10 +38,12 @@ export default function Home() {
         className="min-h-screen flex items-center justify-center relative overflow-hidden"
       >
         <div
-          className="absolute inset-0 pointer-events-none transition-opacity duration-500"
+          className="absolute inset-0 pointer-events-none transition-opacity duration-700"
           style={{
-            background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, var(--color-accent) 0%, transparent 40%)`,
-            opacity: 0.1,
+            background: isTouch
+              ? 'radial-gradient(ellipse at 50% 50%, var(--color-accent) 0%, transparent 60%)'
+              : `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, var(--color-accent) 0%, transparent 40%)`,
+            opacity: 0.08,
           }}
         />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center relative z-10">
