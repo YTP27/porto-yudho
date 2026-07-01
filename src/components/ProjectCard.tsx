@@ -42,7 +42,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
           ref={cardRef}
           onMouseMove={handleMouse}
           onMouseLeave={handleLeave}
-          className="glass rounded-2xl overflow-hidden card-hover"
+          className="glass rounded-2xl overflow-hidden card-hover gradient-border"
           style={{
             backgroundColor: 'var(--bg-card)',
             transform: isTouch ? 'none' : 'rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg))',

@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import ProjectCard from '../components/ProjectCard'
+import FloatingOrbs from '../components/FloatingOrbs'
+import WordReveal from '../components/WordReveal'
 import { projects } from '../data/projects'
 import Contact from '../components/Contact'
 import { useLang } from '../contexts/LanguageContext'
@@ -46,13 +48,14 @@ export default function Home() {
             opacity: 0.08,
           }}
         />
+        <FloatingOrbs />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 glass rounded-full text-sm mb-8" style={{ color: 'var(--text-secondary)' }}>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 glass rounded-full text-sm mb-8 gradient-border" style={{ color: 'var(--text-secondary)' }}>
               <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--color-accent)' }} />
               {t.hero.badge}
             </div>
@@ -66,7 +69,7 @@ export default function Home() {
             style={{ color: 'var(--text-primary)' }}
           >
             {t.hero.greeting}{' '}
-            <span className="gradient-text">{t.hero.name}</span>
+            <WordReveal text={t.hero.name} className="gradient-text" />
             <br />
             <span className="text-2xl sm:text-3xl lg:text-4xl font-normal" style={{ color: 'var(--text-secondary)' }}>
               {t.hero.subtitle}
