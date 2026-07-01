@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import ProjectCard from '../components/ProjectCard'
@@ -12,15 +12,28 @@ type Section = 'projects' | 'experience'
 export default function Home() {
   const { t } = useLang()
   const [active, setActive] = useState<Section>('projects')
+  const [mousePos, setMousePos] = useState({ x: -999, y: -999 })
+  const heroRef = useRef<HTMLDivElement>(null)
+
+  const handleMouse = (e: React.MouseEvent) => {
+    const rect = heroRef.current?.getBoundingClientRect()
+    if (rect) {
+      setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top })
+    }
+  }
 
   return (
     <div>
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      <section
+        ref={heroRef}
+        onMouseMove={handleMouse}
+        className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      >
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-0 pointer-events-none transition-opacity duration-500"
           style={{
-            background: 'radial-gradient(ellipse at 50% 0%, var(--color-accent) 0%, transparent 60%)',
-            opacity: 0.08,
+            background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, var(--color-accent) 0%, transparent 40%)`,
+            opacity: 0.1,
           }}
         />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center relative z-10">
@@ -212,7 +225,14 @@ export default function Home() {
                     <div className="absolute left-8 sm:left-12 top-0 bottom-0 w-px" style={{ backgroundColor: 'var(--border-color)' }} />
                     <div className="space-y-10">
                       {experiences.map((exp, i) => (
-                        <div key={i} className="relative pl-16 sm:pl-20">
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, x: -30 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true, margin: '-30px' }}
+                          transition={{ duration: 0.5, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                          className="relative pl-16 sm:pl-20"
+                        >
                           <div
                             className="absolute left-6 sm:left-10 top-1 w-4 h-4 rounded-full border-2 -translate-x-1/2"
                             style={{ backgroundColor: 'var(--bg-primary)', borderColor: 'var(--color-accent)' }}
@@ -243,8 +263,8 @@ export default function Home() {
                               ))}
                             </ul>
                           </div>
-                        </div>
-                      ))}
+                          </motion.div>
+                        ))}
                     </div>
                   </div>
                 </div>

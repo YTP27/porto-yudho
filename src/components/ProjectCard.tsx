@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import type { Project } from '../data/projects'
@@ -5,18 +6,47 @@ import { useLang } from '../contexts/LanguageContext'
 
 export default function ProjectCard({ project, index }: { project: Project; index: number }) {
   const { t } = useLang()
+  const cardRef = useRef<HTMLDivElement>(null)
+
+  const handleMouse = (e: React.MouseEvent) => {
+    const rect = cardRef.current?.getBoundingClientRect()
+    if (!rect) return
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    const cx = rect.width / 2
+    const cy = rect.height / 2
+    const rotateX = ((y - cy) / cy) * -6
+    const rotateY = ((x - cx) / cx) * 6
+    cardRef.current?.style.setProperty('--rx', `${rotateX}deg`)
+    cardRef.current?.style.setProperty('--ry', `${rotateY}deg`)
+    cardRef.current?.style.setProperty('--sx', `${x}px`)
+    cardRef.current?.style.setProperty('--sy', `${y}px`)
+  }
+
+  const handleLeave = () => {
+    cardRef.current?.style.setProperty('--rx', '0deg')
+    cardRef.current?.style.setProperty('--ry', '0deg')
+  }
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.6, delay: index * 0.15 }}
+      transition={{ duration: 0.6, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
     >
-      <Link to={`/projects/${project.id}`} className="group block">
+      <Link to={`/projects/${project.id}`} className="group block perspective-[1000px]">
         <div
+          ref={cardRef}
+          onMouseMove={handleMouse}
+          onMouseLeave={handleLeave}
           className="glass rounded-2xl overflow-hidden card-hover"
-          style={{ backgroundColor: 'var(--bg-card)' }}
+          style={{
+            backgroundColor: 'var(--bg-card)',
+            transform: 'rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg))',
+            transition: 'transform 0.15s ease-out',
+            position: 'relative',
+          }}
         >
           <div
             className="aspect-video overflow-hidden flex items-center justify-center p-4"
@@ -25,7 +55,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
             <img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-scale-down group-hover:scale-105 transition-transform duration-500"
+              className="w-full h-full object-scale-down group-hover:scale-110 transition-transform duration-700"
             />
           </div>
           <div className="p-5">

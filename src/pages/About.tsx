@@ -150,26 +150,34 @@ export default function About() {
             {skills.map((skill, i) => (
               <motion.div
                 key={skill.name}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
               >
                 <div className="flex justify-between mb-2">
                   <span className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{skill.name}</span>
                   <span className="text-sm font-mono" style={{ color: 'var(--color-accent)' }}>{skill.level}%</span>
                 </div>
-                <div className="h-2 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--bg-card)' }}>
+                <div className="h-2.5 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--bg-card)' }}>
                   <motion.div
-                    className="h-full rounded-full"
+                    className="h-full rounded-full relative"
                     initial={{ width: 0 }}
                     whileInView={{ width: `${Math.min(skill.level, 100)}%` }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1.2, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ duration: 1.2, delay: 0.2 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
                     style={{
                       background: 'linear-gradient(90deg, var(--color-accent), var(--color-accent-light))',
                     }}
-                  />
+                  >
+                    <div
+                      className="absolute inset-0 rounded-full"
+                      style={{
+                        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
+                        animation: 'shimmer 2s infinite',
+                      }}
+                    />
+                  </motion.div>
                 </div>
               </motion.div>
             ))}
@@ -195,8 +203,9 @@ export default function About() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="flex flex-col items-center gap-2 p-3 rounded-xl"
+                transition={{ duration: 0.4, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -4, scale: 1.05 }}
+                className="flex flex-col items-center gap-2 p-3 rounded-xl transition-colors cursor-default"
                 style={{ backgroundColor: 'var(--bg-card)' }}
               >
                 <img src={tool.icon} alt={tool.name} className="h-8 w-8 object-contain" />
