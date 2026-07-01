@@ -69,10 +69,13 @@ export default function Home() {
             className="text-4xl sm:text-6xl lg:text-7xl font-bold leading-tight"
             style={{ color: 'var(--text-primary)' }}
           >
-            {t.hero.greeting}{' '}
-            <WordReveal text={t.hero.name} className="gradient-text" />
-            <br />
-            <Typewriter text={t.hero.subtitle} className="text-2xl sm:text-3xl lg:text-4xl font-normal subtitle-typing" delay={2.2} />
+            {t.hero.greeting}
+            <div className="mt-2">
+              <WordReveal text={t.hero.name} className="gradient-text text-4xl sm:text-6xl lg:text-7xl font-bold" />
+            </div>
+            <div className="mt-4">
+              <Typewriter text={t.hero.subtitle} className="text-xl sm:text-2xl lg:text-3xl font-normal subtitle-typing" delay={2.2} />
+            </div>
           </motion.h1>
 
           <motion.p

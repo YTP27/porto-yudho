@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
         </div>
         <p className="text-sm text-center mt-4" style={{ color: 'var(--text-muted)' }}>
-          &copy; {year} Yudho Tri Putranto. {t.footer.built}.
+          &copy; {year} Yudho Tri Putranto.
         </p>
       </div>
     </footer>
