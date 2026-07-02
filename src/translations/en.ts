@@ -7,7 +7,7 @@ export const en = {
     resume: 'Resume',
   },
   hero: {
-    badge: 'QA Engineer & UI/UX Designer',
+    badge: 'Quality Assurance Engineer',
     greeting: "Hi, I'm",
     name: 'Yudho Tri Putranto',
     subtitle: 'I turn complex problems into simple, user-friendly experiences',

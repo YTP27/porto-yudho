@@ -7,7 +7,7 @@ export const id: typeof import('./en').en = {
     resume: 'Resume',
   },
   hero: {
-    badge: 'QA Engineer & UI/UX Designer',
+    badge: 'Quality Assurance Engineer',
     greeting: 'Halo, saya',
     name: 'Yudho Tri Putranto',
     subtitle: 'Saya ubah masalah rumit jadi pengalaman yang sederhana dan ramah pengguna',
