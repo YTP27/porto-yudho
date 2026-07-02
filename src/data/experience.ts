@@ -3,6 +3,8 @@ export interface Experience {
   role: string
   period: string
   logo: string
+  type: string
+  location: string
   highlights: string[]
 }
 
@@ -12,6 +14,8 @@ export const experiences: Experience[] = [
     role: 'Quality Assurance Engineer',
     period: 'October 2025 - Present',
     logo: '/images/IDstar logo.webp',
+    type: 'Full-time',
+    location: 'Jakarta, Indonesia',
     highlights: [
       'Designed, executed, and maintained test cases for web and mobile applications based on business and system requirements.',
       'Performed Functional Testing, Regression Testing, Integration Testing, and Release Validation to ensure application quality before deployment.',
@@ -26,6 +30,8 @@ export const experiences: Experience[] = [
     role: 'Software QA Engineer',
     period: 'October 2024 - October 2025',
     logo: '/images/zealtech solution indonesia.png',
+    type: 'Full-time',
+    location: 'Jakarta, Indonesia',
     highlights: [
       'Led QA activities across multiple client projects, including test planning, test design, test execution, defect management, and release validation.',
       'Collaborated with cross-functional teams in Agile environments to ensure product quality and business requirement compliance.',
@@ -38,6 +44,8 @@ export const experiences: Experience[] = [
     role: 'QA Engineer',
     period: 'July 2024 - October 2024',
     logo: '/images/elisoft.jpg',
+    type: 'Full-time',
+    location: 'Tangerang, Indonesia',
     highlights: [
       'Led Quality Assurance activities for web and Progressive Web Application (PWA) development projects.',
       'Designed and executed test cases while performing functional, integration, regression, and end-to-end testing.',
